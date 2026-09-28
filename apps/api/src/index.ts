@@ -11,7 +11,7 @@ import { commentsRouter, commentByIdRouter } from "./routes/comments";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 
 const app = express();
-const PORT = Number(process.env.API_PORT) || 4000;
+const PORT = Number(process.env.PORT || process.env.API_PORT) || 4000;
 
 // --- Security & plumbing -----------------------------------------------
 app.use(helmet());
