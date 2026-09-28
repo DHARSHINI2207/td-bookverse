@@ -1,0 +1,58 @@
+// T&D BookVerse — Prisma schema
+// Book 1 ---- N Review, with cascading delete so reviews never become orphans.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Book {
+  id              String   @id @default(uuid())
+  title           String
+  author          String
+  genre           String
+  publicationYear Int      @map("publication_year")
+  coverUrl        String   @map("cover_url")
+  description     String   @db.Text
+  reviews         Review[]
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@index([genre])
+  @@index([author])
+  @@index([title])
+  @@map("books")
+}
+
+model Review {
+  id           String   @id @default(uuid())
+  bookId       String   @map("book_id")
+  book         Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  reviewerName String   @map("reviewer_name")
+  title        String
+  rating       Int
+  content      String   @db.Text
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  comments     Comment[]
+
+  @@index([bookId])
+  @@map("reviews")
+}
+
+
+model Comment {
+  id            String   @id @default(uuid())
+  reviewId      String   @map("review_id")
+  review        Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  commenterName String   @map("commenter_name")
+  content       String   @db.Text
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@index([reviewId])
+  @@map("comments")
+}

@@ -1,0 +1,601 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   BOOKVERSE — DREAMY PINK THEME
+   ========================================================= */
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+
+    font-family:
+      "DM Sans",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    color: #111111;
+
+    background:
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(255, 115, 177, 0.72) 0%,
+        rgba(255, 153, 199, 0.42) 22%,
+        transparent 48%
+      ),
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(192, 130, 238, 0.62) 0%,
+        rgba(215, 166, 244, 0.30) 24%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 100%,
+        rgba(255, 139, 194, 0.58) 0%,
+        transparent 48%
+      ),
+      linear-gradient(
+        135deg,
+        #ffe2ef 0%,
+        #ffd3e7 30%,
+        #f5d8ec 62%,
+        #e8dcf7 100%
+      );
+
+    background-attachment: fixed;
+    line-height: 1.6;
+  }
+
+  /*
+   * GLOBAL TEXT
+   * Everything defaults to black.
+   */
+
+  body,
+  body * {
+    color: #111111;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-display {
+    font-family:
+      "Fraunces",
+      ui-serif,
+      Georgia,
+      serif;
+
+    color: #090909;
+  }
+
+  p,
+  span,
+  label,
+  li,
+  div {
+    color: #111111;
+  }
+
+  strong,
+  b {
+    color: #050505;
+  }
+
+  a {
+    color: #171717;
+  }
+
+  a:hover {
+    color: #8f2458;
+  }
+
+  input,
+  textarea,
+  select {
+    color: #111111;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #555555;
+    opacity: 1;
+  }
+
+  ::selection {
+    background: rgba(178, 38, 105, 0.28);
+    color: #000000;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #a52f6b;
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  .dark {
+    color-scheme: light;
+  }
+
+  .dark body {
+    color: #111111;
+
+    background:
+      radial-gradient(
+        circle at 0% 0%,
+        rgba(255, 115, 177, 0.72),
+        transparent 48%
+      ),
+      radial-gradient(
+        circle at 100% 0%,
+        rgba(192, 130, 238, 0.62),
+        transparent 50%
+      ),
+      linear-gradient(
+        135deg,
+        #ffe2ef,
+        #ffd3e7 45%,
+        #e8dcf7
+      );
+  }
+}
+
+/* =========================================================
+   COMPONENTS
+   ========================================================= */
+
+@layer components {
+  .dreamy-surface {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.90),
+        rgba(255, 235, 246, 0.82)
+      );
+
+    border: 1px solid rgba(120, 30, 82, 0.16);
+
+    box-shadow:
+      0 20px 55px rgba(90, 25, 70, 0.14),
+      0 5px 18px rgba(90, 25, 70, 0.07);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .dreamy-button {
+    color: #ffffff !important;
+
+    background:
+      linear-gradient(
+        135deg,
+        #c62f73 0%,
+        #d94f91 45%,
+        #8f62c2 100%
+      );
+
+    border: 1px solid rgba(105, 20, 70, 0.20);
+
+    box-shadow:
+      0 12px 28px rgba(174, 42, 103, 0.30),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      filter 0.2s ease;
+  }
+
+  .dreamy-button:hover {
+    color: #ffffff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 18px 36px rgba(144, 57, 130, 0.36),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
+    filter: brightness(1.05);
+  }
+
+  .dreamy-button:active {
+    transform: translateY(0);
+  }
+
+  input,
+  textarea,
+  select {
+    background: rgba(255, 255, 255, 0.88);
+    color: #111111 !important;
+    border-color: rgba(90, 25, 70, 0.20);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #555555 !important;
+  }
+}
+
+/* =========================================================
+   CUSTOM UTILITIES
+   ========================================================= */
+
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background: rgba(220, 190, 210, 0.55);
+  }
+
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.75),
+        transparent
+      );
+
+    background-size: 400px 100%;
+    animation: shimmer 2.5s linear infinite;
+  }
+
+  .text-bookverse-dark {
+    color: #111111 !important;
+  }
+
+  .text-bookverse-plum {
+    color: #301025 !important;
+  }
+
+  .text-bookverse-pink {
+    color: #8f2458 !important;
+  }
+
+  .text-bookverse-purple {
+    color: #63418d !important;
+  }
+
+  /*
+   * Force Tailwind white text to black.
+   *
+   * Buttons are excluded below.
+   */
+  .text-white {
+    color: #111111 !important;
+  }
+
+  .text-black {
+    color: #000000 !important;
+  }
+
+  .text-slate-50,
+  .text-slate-100,
+  .text-slate-200 {
+    color: #222222 !important;
+  }
+
+  .text-gray-50,
+  .text-gray-100,
+  .text-gray-200 {
+    color: #222222 !important;
+  }
+
+  /*
+   * Button text remains white.
+   */
+  button,
+  button.text-white,
+  button .text-white,
+  .dreamy-button,
+  .dreamy-button *,
+  [role="button"],
+  [role="button"] .text-white {
+    color: #ffffff !important;
+  }
+
+  /*
+   * Navigation text should be dark.
+   */
+  nav,
+  nav *,
+  header,
+  header * {
+    color: #111111;
+  }
+
+  nav a:hover,
+  header a:hover {
+    color: #8f2458 !important;
+  }
+}
+
+/* =========================================================
+   BACKGROUND ORBS
+   ========================================================= */
+
+.dreamy-orb {
+  position: fixed;
+
+  width: 22rem;
+  height: 22rem;
+
+  border-radius: 999px;
+
+  pointer-events: none;
+
+  filter: blur(70px);
+  opacity: 0.42;
+
+  z-index: 0;
+
+  animation:
+    dreamyFloat
+    11s
+    ease-in-out
+    infinite;
+}
+
+.dreamy-orb-one {
+  left: -9rem;
+  top: 18rem;
+
+  background:
+    radial-gradient(
+      circle,
+      #f472b6,
+      #f9a8d4
+    );
+}
+
+.dreamy-orb-two {
+  right: -8rem;
+  top: 40rem;
+
+  background:
+    radial-gradient(
+      circle,
+      #a78bfa,
+      #c4b5fd
+    );
+
+  animation-delay: -5s;
+}
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
+.dreamy-grid {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.22;
+
+  background-image:
+    radial-gradient(
+      rgba(90, 20, 65, 0.18) 1px,
+      transparent 1px
+    );
+
+  background-size: 28px 28px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 75%
+    );
+
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent 75%
+    );
+
+  z-index: 0;
+}
+
+/* =========================================================
+   CURSOR SPARKLES
+   ========================================================= */
+
+.cursor-sparkle {
+  position: fixed;
+
+  width: var(--sparkle-size);
+  height: var(--sparkle-size);
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 999px;
+
+  background:
+    hsl(
+      var(--sparkle-hue),
+      92%,
+      72%
+    );
+
+  box-shadow:
+    0 0 10px
+      hsl(
+        var(--sparkle-hue),
+        90%,
+        76%
+      ),
+    0 0 20px
+      rgba(196, 181, 253, 0.55);
+
+  animation:
+    cursorSparkle
+    0.82s
+    ease-out
+    var(--sparkle-delay)
+    forwards;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes cursorSparkle {
+  0% {
+    opacity: 0.95;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  45% {
+    opacity: 0.8;
+
+    transform:
+      translate(
+        calc(-50% + var(--drift-x, 5px)),
+        calc(-50% - 7px)
+      )
+      scale(1.35);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate(
+        calc(-50% + var(--drift-x, 5px)),
+        calc(-50% - 25px)
+      )
+      scale(0.15);
+  }
+}
+
+@keyframes dreamyFloat {
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(0, -28px, 0)
+      scale(1.06);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cursor-sparkle {
+    display: none;
+  }
+}
+
+/* ALL NORMAL TEXT */
+body,
+body p,
+body span,
+body div,
+body label,
+body li,
+body small,
+body .text-sm,
+body .text-xs,
+body .text-base,
+body .text-gray-400,
+body .text-gray-500,
+body .text-gray-600,
+body .text-slate-400,
+body .text-slate-500,
+body .text-slate-600 {
+  color: #111111 !important;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #050505 !important;
+}
+
+/* Buttons stay white */
+button,
+button *,
+.dreamy-button,
+.dreamy-button * {
+  color: #ffffff !important;
+}
