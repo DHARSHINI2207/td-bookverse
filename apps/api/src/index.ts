@@ -12,6 +12,7 @@ import { commentsRouter, commentByIdRouter } from "./routes/comments";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = Number(process.env.PORT || process.env.API_PORT) || 4000;
 
 // --- Security & plumbing -----------------------------------------------
