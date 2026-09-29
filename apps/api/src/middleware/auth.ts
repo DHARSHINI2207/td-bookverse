@@ -32,6 +32,13 @@ export function requireAuth(
   if (!authorization?.startsWith("Bearer ")) {
     return next(ApiError.unauthorized("Authentication required"));
   }
+  console.log("[AUTH DEBUG]", {
+  method: req.method,
+  path: req.path,
+  hasAuthorization: Boolean(authorization),
+  startsWithBearer: authorization?.startsWith("Bearer ") ?? false,
+  tokenLength: authorization ? authorization.slice("Bearer ".length).trim().length : 0,
+});
 
   const token = authorization.slice("Bearer ".length).trim();
 
