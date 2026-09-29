@@ -1,4 +1,4 @@
-import { requireAdmin } from "../middleware/auth";
+import { requireAuth, requireAdmin } from "../middleware/auth";
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
@@ -103,6 +103,7 @@ booksRouter.post(
 // PUT /api/books/:id — update.
 booksRouter.put(
   "/:id",
+  requireAuth,
   requireAdmin,
   asyncHandler(async (req, res) => {
     const data = bookInputSchema.partial().parse(req.body);
