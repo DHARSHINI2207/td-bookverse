@@ -1,5 +1,22 @@
 // T&D BookVerse — Prisma schema
 // Book 1 ---- N Review, with cascading delete so reviews never become orphans.
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@index([email])
+  @@map("users")
+}
 
 generator client {
   provider = "prisma-client-js"
@@ -29,21 +46,20 @@ model Book {
 }
 
 model Review {
-  id           String   @id @default(uuid())
-  bookId       String   @map("book_id")
-  book         Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
-  reviewerName String   @map("reviewer_name")
+  id           String    @id @default(uuid())
+  bookId       String    @map("book_id")
+  book         Book      @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  reviewerName String    @map("reviewer_name")
   title        String
   rating       Int
-  content      String   @db.Text
-  createdAt    DateTime @default(now()) @map("created_at")
-  updatedAt    DateTime @updatedAt @map("updated_at")
+  content      String    @db.Text
+  createdAt    DateTime  @default(now()) @map("created_at")
+  updatedAt    DateTime  @updatedAt @map("updated_at")
   comments     Comment[]
 
   @@index([bookId])
   @@map("reviews")
 }
-
 
 model Comment {
   id            String   @id @default(uuid())

@@ -8,10 +8,13 @@ import Home from "@/pages/Home";
 import Books from "@/pages/Books";
 import BookDetails from "@/pages/BookDetails";
 import AddBook from "@/pages/AddBook";
+import EditBook from "@/pages/EditBook";
 import AddReview from "@/pages/AddReview";
 import EditReview from "@/pages/EditReview";
 import About from "@/pages/About";
 import NotFound from "@/pages/NotFound";
+import Login from "@/pages/Login";
+import RequireAdmin from "@/components/RequireAdmin";
 
 export default function App() {
   const location = useLocation();
@@ -30,6 +33,15 @@ export default function App() {
             <Route path="/" element={<PageTransition><Home /></PageTransition>} />
             <Route path="/books" element={<PageTransition><Books /></PageTransition>} />
             <Route path="/books/new" element={<PageTransition><AddBook /></PageTransition>} />
+            <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
+            <Route
+              path="/books/:id/edit"
+              element={
+                <RequireAdmin>
+                  <PageTransition><EditBook /></PageTransition>
+                </RequireAdmin>
+              }
+            />
             <Route path="/books/:id" element={<PageTransition><BookDetails /></PageTransition>} />
             <Route path="/books/:bookId/reviews/new" element={<PageTransition><AddReview /></PageTransition>} />
             <Route path="/reviews/:id/edit" element={<PageTransition><EditReview /></PageTransition>} />

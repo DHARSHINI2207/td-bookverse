@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Menu, Search, X } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+import { BookOpen, LogIn, LogOut, Menu, Search, X } from "lucide-react";
 
 const links = [
   { to: "/books", label: "Books" },
@@ -13,6 +14,7 @@ export function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const { user, isAdmin, logout } = useAuth();
 
   const submitSearch = (e: FormEvent) => {
     e.preventDefault();
@@ -29,7 +31,7 @@ export function Navbar() {
             <BookOpen className="h-[18px] w-[18px]" />
           </span>
           <span className="font-display text-lg font-semibold tracking-tight">
-            T&amp;D <span className="text-forest dark:text-brass-light">BookVerse</span>
+            T&amp;D <span className="text-[#741442]">BookVerse</span>
           </span>
         </Link>
 
@@ -41,7 +43,7 @@ export function Navbar() {
               className={({ isActive }) =>
                 `text-sm font-medium transition-colors ${
                   isActive
-                    ? "text-forest dark:text-brass-light"
+                    ? "text-[#741442]"
                     : "text-ink/70 hover:text-ink dark:text-parchment/70 dark:hover:text-parchment"
                 }`
               }
@@ -94,6 +96,28 @@ export function Navbar() {
             Add a book
           </Link>
 
+          {user ? (
+            <button
+              onClick={() => {
+                logout();
+                navigate("/");
+              }}
+              className="ml-1 hidden sm:inline-flex items-center gap-1.5 rounded-full border border-ink/15 dark:border-parchment/20 px-3.5 py-2 text-sm font-medium hover:border-forest hover:text-forest dark:hover:border-brass-light dark:hover:text-brass-light transition-colors"
+              title={isAdmin ? "Administrator" : user.email}
+            >
+              <LogOut className="h-4 w-4" />
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="ml-1 hidden sm:inline-flex items-center gap-1.5 rounded-full border border-ink/15 dark:border-parchment/20 px-3.5 py-2 text-sm font-medium hover:border-forest hover:text-forest dark:hover:border-brass-light dark:hover:text-brass-light transition-colors"
+            >
+              <LogIn className="h-4 w-4" />
+              Login
+            </Link>
+          )}
+
           <button
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
@@ -131,6 +155,29 @@ export function Navbar() {
               >
                 Add a book
               </Link>
+
+              {user ? (
+                <button
+                  onClick={() => {
+                    logout();
+                    setMobileOpen(false);
+                    navigate("/");
+                  }}
+                  className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 dark:border-parchment/20 px-4 py-2.5 text-sm font-medium"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  onClick={() => setMobileOpen(false)}
+                  className="mt-1 inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 dark:border-parchment/20 px-4 py-2.5 text-sm font-medium"
+                >
+                  <LogIn className="h-4 w-4" />
+                  Login
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

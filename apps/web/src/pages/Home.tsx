@@ -31,13 +31,13 @@ export default function Home() {
       {/* Hero — the one deliberate animated moment on the page */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 pt-14 sm:pt-20 pb-16 grid md:grid-cols-2 gap-10 items-center">
         <motion.div variants={container} initial="hidden" animate="show">
-          <motion.p variants={item} className="text-sm font-medium text-brass-dark dark:text-brass-light">
+          <motion.p variants={item} className="text-sm font-medium text-black">
             A place for readers, by readers
           </motion.p>
           <motion.h1 variants={item} className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tight">
-            T&amp;D <span className="text-forest dark:text-brass-light">BookVerse</span>
+            T&amp;D <span className="text-[#741442]">BookVerse</span>
           </motion.h1>
-          <motion.p variants={item} className="mt-5 text-lg text-ink/70 dark:text-parchment/70 max-w-md">
+          <motion.p variants={item} className="mt-5 text-lg text-black max-w-md">
             Discover stories, share your thoughts, and find your next great read — reviewed
             honestly by people who actually finished the book.
           </motion.p>
@@ -59,11 +59,11 @@ export default function Home() {
           <motion.div variants={item} className="mt-10 flex gap-8">
             <div>
               <p className="font-display text-2xl font-semibold">10+</p>
-              <p className="text-sm text-ink-muted dark:text-parchment/50">Books to explore</p>
+              <p className="text-sm text-black">Books to explore</p>
             </div>
             <div>
               <p className="font-display text-2xl font-semibold">30+</p>
-              <p className="text-sm text-ink-muted dark:text-parchment/50">Honest reviews</p>
+              <p className="text-sm text-black">Honest reviews</p>
             </div>
           </motion.div>
         </motion.div>
@@ -82,13 +82,13 @@ export default function Home() {
         <div className="flex items-end justify-between mb-6">
           <div>
             <h2 className="font-display text-2xl sm:text-3xl font-semibold">Reader favorites</h2>
-            <p className="text-ink-muted dark:text-parchment/60 text-sm mt-1">
+            <p className="text-black text-sm mt-1">
               The highest-rated books on BookVerse right now.
             </p>
           </div>
           <Link
             to="/books"
-            className="hidden sm:inline text-sm font-medium text-forest dark:text-brass-light hover:underline underline-offset-4"
+            className="hidden sm:inline text-sm font-medium text-[#741442] hover:underline underline-offset-4"
           >
             View all books
           </Link>
@@ -109,9 +109,9 @@ export default function Home() {
           { icon: PenLine, title: "Your voice matters", body: "Add, edit, or remove your reviews any time — your opinion, your words." },
         ].map(({ icon: Icon, title, body }) => (
           <div key={title} className="rounded-xl2 border border-ink/10 dark:border-parchment/10 p-6">
-            <Icon className="h-5 w-5 text-forest dark:text-brass-light" />
+            <Icon className="h-5 w-5 text-[#741442]" />
             <h3 className="mt-4 font-display text-lg font-semibold">{title}</h3>
-            <p className="mt-1.5 text-sm text-ink/70 dark:text-parchment/60">{body}</p>
+            <p className="mt-1.5 text-sm text-black">{body}</p>
           </div>
         ))}
       </section>

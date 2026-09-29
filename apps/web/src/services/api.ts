@@ -13,6 +13,15 @@ import type {
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
 
 export const api = axios.create({ baseURL: API_URL, timeout: 10000 });
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("td-bookverse-token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
 
 export class ApiRequestError extends Error {
   status?: number;
@@ -66,6 +75,18 @@ export async function fetchBook(id: string): Promise<BookWithReviews> {
 export async function createBook(payload: BookFormValues): Promise<Book> {
   try {
     const { data } = await api.post<{ data: Book }>("/books", {
+      ...payload,
+      publicationYear: Number(payload.publicationYear),
+    });
+    return data.data;
+  } catch (err) {
+    toApiError(err);
+  }
+}
+
+export async function updateBook(id: string, payload: BookFormValues): Promise<Book> {
+  try {
+    const { data } = await api.put<{ data: Book }>(`/books/${id}`, {
       ...payload,
       publicationYear: Number(payload.publicationYear),
     });

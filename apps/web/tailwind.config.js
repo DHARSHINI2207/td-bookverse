@@ -43,6 +43,15 @@ export default {
         dreamy: '0 18px 50px -28px rgba(137, 53, 102, 0.28)',
         'dreamy-lg': '0 28px 70px -35px rgba(137, 53, 102, 0.32)',
       },
+      keyframes: {
+        shimmer: {
+          '0%': { backgroundPosition: '-400px 0' },
+          '100%': { backgroundPosition: '400px 0' },
+        },
+      },
+      animation: {
+        shimmer: 'shimmer 1.8s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

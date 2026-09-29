@@ -4,10 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =========================================================
-   BOOKVERSE — DREAMY PINK THEME
-   ========================================================= */
-
 @layer base {
   :root {
     color-scheme: light;
@@ -18,57 +14,39 @@
   }
 
   body {
+    @apply text-black transition-colors duration-300;
+
     min-height: 100vh;
-    margin: 0;
 
-    font-family:
-      "DM Sans",
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      sans-serif;
-
-    color: #111111;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 
     background:
       radial-gradient(
-        circle at 0% 0%,
-        rgba(255, 115, 177, 0.72) 0%,
-        rgba(255, 153, 199, 0.42) 22%,
-        transparent 48%
+        circle at 8% 8%,
+        rgba(255, 112, 184, 0.48),
+        transparent 34%
       ),
       radial-gradient(
-        circle at 100% 0%,
-        rgba(192, 130, 238, 0.62) 0%,
-        rgba(215, 166, 244, 0.30) 24%,
-        transparent 50%
+        circle at 92% 12%,
+        rgba(193, 126, 255, 0.46),
+        transparent 36%
       ),
       radial-gradient(
-        circle at 50% 100%,
-        rgba(255, 139, 194, 0.58) 0%,
-        transparent 48%
+        circle at 50% 92%,
+        rgba(255, 160, 215, 0.42),
+        transparent 38%
       ),
       linear-gradient(
-        135deg,
-        #ffe2ef 0%,
-        #ffd3e7 30%,
-        #f5d8ec 62%,
-        #e8dcf7 100%
+        120deg,
+        #ffb6dc 0%,
+        #f4c4e8 42%,
+        #e5b9ee 70%,
+        #d3b5ed 100%
       );
 
     background-attachment: fixed;
-    line-height: 1.6;
-  }
 
-  /*
-   * GLOBAL TEXT
-   * Everything defaults to black.
-   */
-
-  body,
-  body * {
-    color: #111111;
+    font-feature-settings: "ss01" 1;
   }
 
   h1,
@@ -76,52 +54,13 @@
   h3,
   h4,
   h5,
-  h6,
-  .font-display {
-    font-family:
-      "Fraunces",
-      ui-serif,
-      Georgia,
-      serif;
-
-    color: #090909;
-  }
-
-  p,
-  span,
-  label,
-  li,
-  div {
-    color: #111111;
-  }
-
-  strong,
-  b {
-    color: #050505;
-  }
-
-  a {
-    color: #171717;
-  }
-
-  a:hover {
-    color: #8f2458;
-  }
-
-  input,
-  textarea,
-  select {
-    color: #111111;
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: #555555;
-    opacity: 1;
+  h6 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    color: #000000;
   }
 
   ::selection {
-    background: rgba(178, 38, 105, 0.28);
+    background: rgba(244, 114, 182, 0.32);
     color: #000000;
   }
 
@@ -131,7 +70,7 @@
   textarea:focus-visible,
   select:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid #a52f6b;
+    outline: 2px solid #c02672;
     outline-offset: 2px;
     border-radius: 8px;
   }
@@ -141,67 +80,75 @@
   }
 
   .dark body {
-    color: #111111;
+    color: #000000;
 
     background:
       radial-gradient(
-        circle at 0% 0%,
-        rgba(255, 115, 177, 0.72),
-        transparent 48%
+        circle at 8% 8%,
+        rgba(255, 112, 184, 0.48),
+        transparent 34%
       ),
       radial-gradient(
-        circle at 100% 0%,
-        rgba(192, 130, 238, 0.62),
-        transparent 50%
+        circle at 92% 12%,
+        rgba(193, 126, 255, 0.46),
+        transparent 36%
+      ),
+      radial-gradient(
+        circle at 50% 92%,
+        rgba(255, 160, 215, 0.42),
+        transparent 38%
       ),
       linear-gradient(
-        135deg,
-        #ffe2ef,
-        #ffd3e7 45%,
-        #e8dcf7
+        120deg,
+        #ffb6dc 0%,
+        #f4c4e8 42%,
+        #e5b9ee 70%,
+        #d3b5ed 100%
       );
   }
 }
 
-/* =========================================================
-   COMPONENTS
-   ========================================================= */
-
 @layer components {
+  /*
+   * Main dreamy glass surface
+   */
   .dreamy-surface {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.90),
-        rgba(255, 235, 246, 0.82)
-      );
+    background: rgba(255, 255, 255, 0.72);
 
-    border: 1px solid rgba(120, 30, 82, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.55);
 
     box-shadow:
-      0 20px 55px rgba(90, 25, 70, 0.14),
-      0 5px 18px rgba(90, 25, 70, 0.07);
+      0 18px 55px -28px rgba(148, 37, 105, 0.32),
+      0 4px 20px rgba(255, 255, 255, 0.22);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 
+  /*
+   * Main CTA button
+   */
   .dreamy-button {
-    color: #ffffff !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 
-    background:
-      linear-gradient(
-        135deg,
-        #c62f73 0%,
-        #d94f91 45%,
-        #8f62c2 100%
-      );
+    border-radius: 9999px;
 
-    border: 1px solid rgba(105, 20, 70, 0.20);
+    background: linear-gradient(
+      135deg,
+      #a92f70 0%,
+      #b83b7d 50%,
+      #a82e70 100%
+    );
+
+    color: #ffffff;
+
+    border: 1px solid rgba(169, 47, 112, 0.25);
 
     box-shadow:
-      0 12px 28px rgba(174, 42, 103, 0.30),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      0 10px 24px rgba(169, 47, 112, 0.22);
 
     transition:
       transform 0.2s ease,
@@ -210,282 +157,264 @@
   }
 
   .dreamy-button:hover {
-    color: #ffffff !important;
-
     transform: translateY(-2px);
 
     box-shadow:
-      0 18px 36px rgba(144, 57, 130, 0.36),
-      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      0 14px 30px rgba(169, 47, 112, 0.28);
 
-    filter: brightness(1.05);
+    filter: brightness(1.04);
   }
 
-  .dreamy-button:active {
-    transform: translateY(0);
+  /*
+   * Soft secondary button
+   */
+  .dreamy-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    border-radius: 9999px;
+
+    background: rgba(255, 255, 255, 0.22);
+
+    color: #000000;
+
+    border: 1px solid rgba(169, 47, 112, 0.25);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
-  input,
-  textarea,
-  select {
-    background: rgba(255, 255, 255, 0.88);
-    color: #111111 !important;
-    border-color: rgba(90, 25, 70, 0.20);
+  .dreamy-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.42);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+      0 8px 20px rgba(169, 47, 112, 0.12);
   }
 
-  input::placeholder,
-  textarea::placeholder {
-    color: #555555 !important;
-  }
-}
-
-/* =========================================================
-   CUSTOM UTILITIES
-   ========================================================= */
-
-@layer utilities {
-  .line-clamp-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  /*
+   * Text utilities
+   */
+  .text-ink {
+    color: #000000;
   }
 
-  .line-clamp-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .text-ink-muted {
+    color: rgba(0, 0, 0, 0.72);
   }
 
+  /*
+   * Decorative dreamy orbs
+   */
+  .dreamy-orb-one {
+    position: absolute;
+
+    width: 18rem;
+    height: 18rem;
+
+    border-radius: 9999px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(249, 168, 212, 0.55),
+        rgba(249, 168, 212, 0)
+      );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+  }
+
+  .dreamy-orb-two {
+    position: absolute;
+
+    width: 20rem;
+    height: 20rem;
+
+    border-radius: 9999px;
+
+    background:
+      radial-gradient(
+        circle,
+        rgba(196, 181, 253, 0.55),
+        rgba(196, 181, 253, 0)
+      );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+  }
+
+  /*
+   * Soft dotted background grid
+   */
+  .dreamy-grid {
+    background-image:
+      radial-gradient(
+        rgba(169, 47, 112, 0.16) 1px,
+        transparent 1px
+      );
+
+    background-size: 22px 22px;
+  }
+
+  /*
+   * Loading skeleton
+   */
   .skeleton {
     position: relative;
+
     overflow: hidden;
-    background: rgba(220, 190, 210, 0.55);
+
+    background:
+      rgba(255, 255, 255, 0.38);
   }
 
   .skeleton::after {
     content: "";
+
     position: absolute;
+
     inset: 0;
 
-    background-image:
+    transform: translateX(-100%);
+
+    background:
       linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.5),
         transparent
       );
 
-    background-size: 400px 100%;
-    animation: shimmer 2.5s linear infinite;
-  }
-
-  .text-bookverse-dark {
-    color: #111111 !important;
-  }
-
-  .text-bookverse-plum {
-    color: #301025 !important;
-  }
-
-  .text-bookverse-pink {
-    color: #8f2458 !important;
-  }
-
-  .text-bookverse-purple {
-    color: #63418d !important;
+    animation: shimmer 1.8s ease-in-out infinite;
   }
 
   /*
-   * Force Tailwind white text to black.
-   *
-   * Buttons are excluded below.
+   * Book card
    */
-  .text-white {
-    color: #111111 !important;
+  .book-card {
+    background: rgba(255, 255, 255, 0.76);
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    box-shadow:
+      0 16px 45px -30px rgba(130, 30, 100, 0.38);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
   }
 
-  .text-black {
-    color: #000000 !important;
-  }
+  .book-card:hover {
+    transform: translateY(-3px);
 
-  .text-slate-50,
-  .text-slate-100,
-  .text-slate-200 {
-    color: #222222 !important;
-  }
+    background: rgba(255, 255, 255, 0.86);
 
-  .text-gray-50,
-  .text-gray-100,
-  .text-gray-200 {
-    color: #222222 !important;
+    box-shadow:
+      0 20px 50px -28px rgba(130, 30, 100, 0.42);
   }
 
   /*
-   * Button text remains white.
+   * Form fields
    */
-  button,
-  button.text-white,
-  button .text-white,
-  .dreamy-button,
-  .dreamy-button *,
-  [role="button"],
-  [role="button"] .text-white {
-    color: #ffffff !important;
+  .dreamy-input {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    color: #000000;
+
+    border: 1px solid rgba(169, 47, 112, 0.18);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .dreamy-input::placeholder {
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .dreamy-input:focus {
+    background: rgba(255, 255, 255, 0.9);
+
+    border-color: rgba(169, 47, 112, 0.48);
+
+    box-shadow:
+      0 0 0 3px rgba(244, 114, 182, 0.16);
   }
 
   /*
-   * Navigation text should be dark.
+   * Soft badge
    */
-  nav,
-  nav *,
-  header,
-  header * {
-    color: #111111;
+  .dreamy-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9999px;
+
+    padding: 0.25rem 0.7rem;
+
+    background: rgba(255, 255, 255, 0.58);
+
+    color: #000000;
+
+    border: 1px solid rgba(169, 47, 112, 0.12);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
-  nav a:hover,
-  header a:hover {
-    color: #8f2458 !important;
+  /*
+   * Navigation glass
+   */
+  .dreamy-nav {
+    background: rgba(255, 255, 255, 0.58);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+    box-shadow:
+      0 8px 30px rgba(128, 30, 100, 0.08);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /*
+   * Soft divider
+   */
+  .dreamy-divider {
+    border-color: rgba(169, 47, 112, 0.14);
   }
 }
 
-/* =========================================================
-   BACKGROUND ORBS
-   ========================================================= */
-
-.dreamy-orb {
-  position: fixed;
-
-  width: 22rem;
-  height: 22rem;
-
-  border-radius: 999px;
-
-  pointer-events: none;
-
-  filter: blur(70px);
-  opacity: 0.42;
-
-  z-index: 0;
-
-  animation:
-    dreamyFloat
-    11s
-    ease-in-out
-    infinite;
-}
-
-.dreamy-orb-one {
-  left: -9rem;
-  top: 18rem;
-
-  background:
-    radial-gradient(
-      circle,
-      #f472b6,
-      #f9a8d4
-    );
-}
-
-.dreamy-orb-two {
-  right: -8rem;
-  top: 40rem;
-
-  background:
-    radial-gradient(
-      circle,
-      #a78bfa,
-      #c4b5fd
-    );
-
-  animation-delay: -5s;
-}
-
-/* =========================================================
-   BACKGROUND GRID
-   ========================================================= */
-
-.dreamy-grid {
-  position: fixed;
-
-  inset: 0;
-
-  pointer-events: none;
-
-  opacity: 0.22;
-
-  background-image:
-    radial-gradient(
-      rgba(90, 20, 65, 0.18) 1px,
-      transparent 1px
-    );
-
-  background-size: 28px 28px;
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      black,
-      transparent 75%
-    );
-
-  -webkit-mask-image:
-    linear-gradient(
-      to bottom,
-      black,
-      transparent 75%
-    );
-
-  z-index: 0;
-}
-
-/* =========================================================
-   CURSOR SPARKLES
-   ========================================================= */
-
-.cursor-sparkle {
-  position: fixed;
-
-  width: var(--sparkle-size);
-  height: var(--sparkle-size);
-
-  transform: translate(-50%, -50%);
-
-  border-radius: 999px;
-
-  background:
-    hsl(
-      var(--sparkle-hue),
-      92%,
-      72%
-    );
-
-  box-shadow:
-    0 0 10px
-      hsl(
-        var(--sparkle-hue),
-        90%,
-        76%
-      ),
-    0 0 20px
-      rgba(196, 181, 253, 0.55);
-
-  animation:
-    cursorSparkle
-    0.82s
-    ease-out
-    var(--sparkle-delay)
-    forwards;
-
-  pointer-events: none;
-}
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
+/*
+ * Shimmer animation
+ */
 @keyframes shimmer {
   0% {
     background-position: -400px 0;
@@ -496,90 +425,76 @@
   }
 }
 
-@keyframes cursorSparkle {
-  0% {
-    opacity: 0.95;
-
-    transform:
-      translate(-50%, -50%)
-      scale(1);
-  }
-
-  45% {
-    opacity: 0.8;
-
-    transform:
-      translate(
-        calc(-50% + var(--drift-x, 5px)),
-        calc(-50% - 7px)
-      )
-      scale(1.35);
-  }
-
-  100% {
-    opacity: 0;
-
-    transform:
-      translate(
-        calc(-50% + var(--drift-x, 5px)),
-        calc(-50% - 25px)
-      )
-      scale(0.15);
-  }
+/*
+ * Smooth scrollbar
+ */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@keyframes dreamyFloat {
-  0%,
-  100% {
-    transform:
-      translate3d(0, 0, 0)
-      scale(1);
-  }
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.22);
+}
 
-  50% {
-    transform:
-      translate3d(0, -28px, 0)
-      scale(1.06);
-  }
+::-webkit-scrollbar-thumb {
+  background: rgba(169, 47, 112, 0.35);
+
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(169, 47, 112, 0.52);
+}
+/* =========================================================
+   FINAL BOOKVERSE TEXT COLORS
+   ========================================================= */
+
+body {
+  color: #000000 !important;
+}
+
+.text-ink {
+  color: #000000 !important;
+}
+
+.text-ink-muted {
+  color: #000000 !important;
+}
+
+/* Keep all normal readable text black */
+p,
+label,
+li {
+  color: #000000;
+}
+
+/* Darker BookVerse accent */
+.bookverse-title {
+  color: #8f315f !important;
 }
 
 /* =========================================================
-   REDUCED MOTION
+   HOMEPAGE FINAL TEXT COLORS
    ========================================================= */
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .cursor-sparkle {
-    display: none;
-  }
+/* All normal homepage text */
+body {
+  color: #000000 !important;
 }
 
-/* ALL NORMAL TEXT */
-body,
-body p,
-body span,
-body div,
-body label,
-body li,
-body small,
-body .text-sm,
-body .text-xs,
-body .text-base,
-body .text-gray-400,
-body .text-gray-500,
-body .text-gray-600,
-body .text-slate-400,
-body .text-slate-500,
-body .text-slate-600 {
-  color: #111111 !important;
+/* Force common text utility classes to black */
+.text-ink,
+.text-ink-muted,
+.text-slate-800,
+.text-slate-700,
+.text-slate-600,
+.text-slate-500,
+.text-gray-900,
+.text-gray-800,
+.text-gray-700,
+.text-gray-600,
+.text-gray-500 {
+  color: #000000 !important;
 }
 
 /* Headings */
@@ -589,13 +504,26 @@ h3,
 h4,
 h5,
 h6 {
-  color: #050505 !important;
+  color: #000000 !important;
 }
 
-/* Buttons stay white */
-button,
-button *,
-.dreamy-button,
-.dreamy-button * {
-  color: #ffffff !important;
+/* Paragraphs and labels */
+p,
+label,
+li {
+  color: #000000 !important;
+}
+
+/* =========================================================
+   T&D BOOKVERSE TITLE
+   ========================================================= */
+
+/* T&D stays pure black */
+h1 {
+  color: #000000 !important;
+}
+
+/* BookVerse becomes a dark plum/pink */
+h1 span {
+  color: #741442 !important;
 }

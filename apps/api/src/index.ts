@@ -5,6 +5,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import rateLimit from "express-rate-limit";
 
+import { authRouter } from "./routes/auth";
 import { booksRouter } from "./routes/books";
 import { reviewsRouter, reviewByIdRouter } from "./routes/reviews";
 import { commentsRouter, commentByIdRouter } from "./routes/comments";
@@ -38,6 +39,7 @@ app.use(
 app.get("/api/health", (_req, res) => res.json({ status: "ok" }));
 
 // --- Routes ---------------------------------------------------------------
+app.use("/api/auth", authRouter);
 app.use("/api/books/:bookId/reviews", reviewsRouter);
 app.use("/api/books", booksRouter);
 app.use("/api/reviews", reviewByIdRouter);

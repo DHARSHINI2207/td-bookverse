@@ -1,3 +1,4 @@
+import { requireAdmin } from "../middleware/auth";
 import { Router } from "express";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
@@ -102,6 +103,7 @@ booksRouter.post(
 // PUT /api/books/:id — update.
 booksRouter.put(
   "/:id",
+  requireAdmin,
   asyncHandler(async (req, res) => {
     const data = bookInputSchema.partial().parse(req.body);
 
@@ -117,15 +119,3 @@ booksRouter.put(
   })
 );
 
-// DELETE /api/books/:id — deleting a book cascades to its reviews (see schema.prisma),
-// so no orphan reviews are ever left behind.
-booksRouter.delete(
-  "/:id",
-  asyncHandler(async (req, res) => {
-    const exists = await prisma.book.findUnique({ where: { id: req.params.id } });
-    if (!exists) throw ApiError.notFound("Book not found");
-
-    await prisma.book.delete({ where: { id: req.params.id } });
-    res.status(204).send();
-  })
-);

@@ -94,7 +94,7 @@ export default function Books() {
           description={error}
         />
       ) : allBooks === null ? (
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="flex flex-col gap-5">
           {Array.from({ length: 6 }).map((_, i) => (
             <BookCardSkeleton key={i} />
           ))}
@@ -106,10 +106,10 @@ export default function Books() {
           description="Try a different search term, or clear your filters to see the whole shelf."
         />
       ) : (
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <motion.div layout className="flex flex-col gap-5">
           <AnimatePresence mode="popLayout">
             {allBooks.map((book, i) => (
-              <BookCard key={book.id} book={book} index={i} />
+              <BookCard key={book.id} book={book} index={i} list />
             ))}
           </AnimatePresence>
         </motion.div>
